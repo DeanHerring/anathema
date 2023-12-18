@@ -1,0 +1,21 @@
+@import 'vars.scss';
+
+body,
+html,
+#wrapper {
+  background-color: $white-2;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  .hero {
+    flex-grow: 1;
+    .container {
+      width: 95%;
+      max-width: 1244px;
+      margin: 25px auto;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<div class="keno__history">
+  <div class="swiper-container">
+    <div class="swiper-prev">
+      <i class="fa-solid fa-angle-left"></i>
+    </div>
+
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <% keno.steps.forEach(step => { %>
+        <div class="swiper-slide">
+          <div class="swiper-slide-content">
+            <h3>Step <%= step.id %></h3>
+            <h2>x<%= step.multiplier %></h2>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+
+    <div class="swiper-next">
+      <i class="fa-solid fa-angle-right"></i>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+.sidebar {
+  min-width: 68px;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+@media only screen and (max-width: 1000px) {
+  .sidebar {
+    display: none;
+  }
+}
+.sidebar__hamburger {
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar__hamburger .icon {
+  color: #ccd2e8;
+  font-size: 30px;
+}
+.sidebar .sidebar__navbar {
+  margin-top: 15px;
+}
+.sidebar .sidebar__navbar .navbar__header h3 {
+  font: 600 14px "Gilroy";
+  color: #ccd2e8;
+  text-align: center;
+}
+.sidebar .sidebar__navbar .navbar__list {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item {
+  width: 60%;
+  aspect-ratio: 1/1;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 10px;
+  transition: all 0.3s;
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item:hover {
+  background-color: #e8e5ff;
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item:first-child {
+  margin-top: 0;
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item .navbar__link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item .navbar__link .icon {
+  color: #bab1ed;
+  font-size: 20px;
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item-title {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 70px;
+  background-color: #e8e5ff;
+  padding: 5px 20px;
+  border-radius: 5px;
+  transform: translateY(-50%);
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item-title.show {
+  display: block;
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item-title:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid #e8e5ff;
+  transform: translate(-100%, -50%);
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item-title h1 {
+  font: 600 14px "Gilroy";
+  color: #2c3034;
+}

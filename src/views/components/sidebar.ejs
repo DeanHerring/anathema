@@ -1,0 +1,25 @@
+<aside class="sidebar">
+  <div class="sidebar__hamburger">
+    <i class="fa-solid fa-bars icon"></i>
+  </div>
+
+  <nav class="sidebar__navbar">
+    <header class="navbar__header">
+      <h3>Games</h3>
+    </header>
+
+    <!-- Dice, Mines, Wheel, Roulette -->
+    <ul class="navbar__list">
+      <% for(var i = 0; i < 8; i++) { %>
+      <li class="navbar__item">
+        <a href="#" class="navbar__link">
+          <i class="fa-solid fa-border-all icon"></i>
+        </a>
+        <div class="navbar__item-title">
+          <h1>Keno</h1>
+        </div>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+</aside>

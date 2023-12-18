@@ -1,0 +1,589 @@
+@font-face {
+  font-family: Gilroy;
+  src: url(../fonts/Gilroy-Regular.woff);
+  font-weight: 400;
+}
+@font-face {
+  font-family: Gilroy;
+  src: url(../fonts/Gilroy-SemiBold.woff);
+  font-weight: 600;
+}
+@font-face {
+  font-family: Gilroy;
+  src: url(../fonts/Gilroy-Bold.woff);
+  font-weight: 700;
+}
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body,
+html,
+#wrapper {
+  background-color: #f7f5fe;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+}
+.content .hero {
+  flex-grow: 1;
+}
+.content .hero .container {
+  width: 95%;
+  max-width: 1244px;
+  margin: 25px auto;
+}
+
+.header {
+  width: 100%;
+  height: 68px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+.header__container {
+  width: 95%;
+  max-width: 1244px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 600px) {
+  .header__container {
+    justify-content: center;
+  }
+}
+.header__container .header__logo {
+  display: flex;
+  align-items: center;
+}
+.header__container .header__logo h1 {
+  font: 700 24px "Gilroy";
+  color: #2c3034;
+  margin-left: 10px;
+}
+@media only screen and (max-width: 600px) {
+  .header__container .header__logo h1 {
+    display: none;
+  }
+}
+.header__container .header__wallet {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f7f5fe;
+  padding: 10px 20px;
+  border-radius: 50px;
+  width: 200px;
+  margin: 0 10px;
+}
+.header__container .header__wallet .wallet__amount h1 {
+  font: 600 16px "Gilroy";
+  color: #2c3034;
+}
+.header__container .header__wallet .wallet__currency {
+  display: flex;
+}
+.header__container .header__wallet .wallet__currency .icon {
+  margin-left: 5px;
+  color: #2c3034;
+}
+.header__container .mobile-hamburger {
+  display: none;
+}
+@media only screen and (max-width: 1000px) {
+  .header__container .mobile-hamburger {
+    display: block;
+  }
+}
+.header__container .mobile-hamburger .icon {
+  font-size: 20px;
+  color: #bab1ed;
+}
+.header__container .mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
+  z-index: 3;
+  display: none;
+}
+.header__container .mobile-menu .mobile-navbar__list .mobile-navbar__item .mobile-navbar__link {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  text-decoration: none;
+}
+.header__container .mobile-menu .mobile-navbar__list .mobile-navbar__item .mobile-navbar__link .mobile-navbar__icon {
+  width: 30px;
+  aspect-ratio: 1/1;
+  background-color: #edecf4;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header__container .mobile-menu .mobile-navbar__list .mobile-navbar__item .mobile-navbar__link .mobile-navbar__icon .icon {
+  color: #bab1ed;
+}
+.header__container .mobile-menu .mobile-navbar__list .mobile-navbar__item .mobile-navbar__link h3 {
+  font: 600 18px "Gilroy";
+  color: #bab1ed;
+  margin-left: 10px;
+}
+
+.sidebar {
+  min-width: 68px;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+@media only screen and (max-width: 1000px) {
+  .sidebar {
+    display: none;
+  }
+}
+.sidebar__hamburger {
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar__hamburger .icon {
+  color: #ccd2e8;
+  font-size: 30px;
+}
+.sidebar .sidebar__navbar {
+  margin-top: 15px;
+}
+.sidebar .sidebar__navbar .navbar__header h3 {
+  font: 600 14px "Gilroy";
+  color: #ccd2e8;
+  text-align: center;
+}
+.sidebar .sidebar__navbar .navbar__list {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item {
+  width: 60%;
+  aspect-ratio: 1/1;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 10px;
+  transition: all 0.3s;
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item:hover {
+  background-color: #e8e5ff;
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item:first-child {
+  margin-top: 0;
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item .navbar__link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item .navbar__link .icon {
+  color: #bab1ed;
+  font-size: 20px;
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item-title {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 70px;
+  background-color: #e8e5ff;
+  padding: 5px 20px;
+  border-radius: 5px;
+  transform: translateY(-50%);
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item-title.show {
+  display: block;
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item-title:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid #e8e5ff;
+  transform: translate(-100%, -50%);
+}
+.sidebar .sidebar__navbar .navbar__list .navbar__item-title h1 {
+  font: 600 14px "Gilroy";
+  color: #2c3034;
+}
+
+.keno {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+@media only screen and (max-width: 1000px) {
+  .keno {
+    grid-template-columns: 1fr 1.33fr;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .keno {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.keno__sidebar {
+  border-radius: 10px 0 0 10px;
+  padding: 20px;
+  border-right: 1px solid #f4f2ff;
+  position: relative;
+}
+.keno__sidebar-header {
+  display: flex;
+  align-items: center;
+}
+.keno__sidebar-header .game-icon {
+  width: 40px;
+  aspect-ratio: 1/1;
+  border-radius: 5px;
+  background-color: #e8e5ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.keno__sidebar-header h1 {
+  font: 700 20px "Gilroy";
+  color: #2c3034;
+  margin-left: 10px;
+}
+.keno__sidebar-amount {
+  margin: 20px 0;
+}
+.keno__sidebar-amount .amount__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.keno__sidebar-amount .amount__header h3 {
+  font: 600 14px "Gilroy";
+}
+.keno__sidebar-amount .amount__header h3:first-child {
+  color: #b6b0d7;
+}
+.keno__sidebar-amount .amount__header h3:last-child {
+  color: #2c3034;
+}
+.keno__sidebar-amount .amount__input {
+  margin-top: 5px;
+  width: 100%;
+  background-color: #f4f2ff;
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.keno__sidebar-amount .amount__input .amount__action {
+  padding: 7.5px;
+  display: flex;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.keno__sidebar-amount .amount__input .amount__action button {
+  border-radius: 3px;
+  font: 600 14px "Gilroy";
+  color: #ffffff;
+  background: linear-gradient(90deg, #bab1ed, #8370ef);
+  border: 0;
+  padding: 5px 0;
+  cursor: pointer;
+}
+.keno__sidebar-amount .amount__input .amount__action button:hover {
+  background: linear-gradient(-90deg, #bab1ed, #8370ef);
+}
+.keno__sidebar-amount .amount__input .amount__action button:last-child {
+  margin-left: 5px;
+}
+.keno__sidebar-amount .amount__input input {
+  width: 100%;
+  padding: 5px 0;
+  border-radius: 3px;
+  background-color: #e6e1f8;
+  text-align: center;
+  font: 600 14px "Gilroy";
+  color: #2c3034;
+  border: none;
+  outline: none;
+  margin: 7.5px 0;
+}
+.keno__sidebar-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+}
+.keno__sidebar-buttons button {
+  padding: 10px 0;
+  border-radius: 3px;
+  background-color: #e8e5ff;
+  border: 0;
+  font: 600 15px "Gilroy";
+  color: #8370ef;
+  cursor: pointer;
+}
+.keno__sidebar-buttons button:last-child {
+  grid-column: span 2;
+  font: 700 16px "Gilroy";
+  background-color: #fac257;
+  color: #ffffff;
+  transition: all 0.1s;
+}
+.keno__sidebar-buttons button:last-child:hover {
+  background-color: #f4a202;
+}
+.keno__sidebar-hash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccd2e8;
+  margin-top: 25px;
+  cursor: pointer;
+}
+.keno__sidebar-hash h3 {
+  font: 600 14px "Gilroy";
+}
+.keno__sidebar-hash .icon {
+  margin-left: 5px;
+}
+.keno__game {
+  flex-grow: 1;
+  border-radius: 0 10px 10px 0;
+}
+.keno__game .keno__grid,
+.keno__game .keno__history {
+  padding: 20px;
+}
+.keno__game .keno__grid-list {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 5px;
+}
+.keno__game .keno__grid-list .keno__grid-item {
+  background-color: #e8e5ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
+  font: 600 24px "Gilroy";
+  color: #2c3034;
+  border-radius: 5px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1100px) {
+  .keno__game .keno__grid-list .keno__grid-item {
+    font-size: 16px;
+  }
+}
+.keno__game .keno__grid-list .keno__grid-item:hover {
+  background-color: #e6e1f8;
+}
+.keno__game .keno__grid-list .keno__grid-item.selected {
+  background-color: #f4a202;
+  color: #ffffff;
+}
+.keno__game .keno__grid-list .keno__grid-item.selected:hover {
+  background-color: #fac257;
+}
+.keno__game .keno__grid-list .keno__grid-item.lose {
+  background-color: "#E9113C";
+}
+.keno__game .keno__grid-list .keno__grid-item.win {
+  background-color: "#00E701";
+}
+.keno__game .keno__history {
+  border-top: 1px solid #f4f2ff;
+  min-width: 0;
+}
+.keno__game .keno__history .swiper-container {
+  display: flex;
+}
+.keno__game .keno__history .swiper-container .swiper-prev,
+.keno__game .keno__history .swiper-container .swiper-next {
+  border-radius: 5px;
+  background-color: #f8f6ff;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.keno__game .keno__history .swiper-container .swiper-prev {
+  margin-right: 10px;
+}
+.keno__game .keno__history .swiper-container .swiper-next {
+  margin-left: 10px;
+}
+.keno__game .keno__history .swiper-container .swiper {
+  display: grid;
+}
+.keno__game .keno__history .swiper-container .swiper .swiper-wrapper {
+  min-width: 0;
+}
+.keno__game .keno__history .swiper-container .swiper .swiper-wrapper .swiper-slide-content {
+  border-radius: 5px;
+  background-color: #f8f6ff;
+  padding: 10px;
+}
+.keno__game .keno__history .swiper-container .swiper .swiper-wrapper .swiper-slide-content h3 {
+  font: 600 13px "Gilroy";
+  color: #bab1ed;
+}
+.keno__game .keno__history .swiper-container .swiper .swiper-wrapper .swiper-slide-content h2 {
+  font: 600 15px "Gilroy";
+  color: #2c3034;
+}

@@ -1,0 +1,227 @@
+@import '../vars.scss';
+
+.keno {
+  width: 100%;
+  background-color: $white-1;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: 1fr 1.33fr;
+  }
+  @media only screen and (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+  }
+  &__sidebar {
+    border-radius: 10px 0 0 10px;
+    padding: 20px;
+    border-right: 1px solid $white-6;
+    position: relative;
+    &-header {
+      display: flex;
+      align-items: center;
+      .game-icon {
+        width: 40px;
+        aspect-ratio: 1 / 1;
+        border-radius: 5px;
+        background-color: $white-5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      h1 {
+        font: 700 20px 'Gilroy';
+        color: $black-1;
+        margin-left: 10px;
+      }
+    }
+    &-amount {
+      margin: 20px 0;
+      .amount__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h3 {
+          font: 600 14px 'Gilroy';
+          &:first-child {
+            color: $white-7;
+          }
+          &:last-child {
+            color: $black-1;
+          }
+        }
+      }
+      .amount__input {
+        margin-top: 5px;
+        width: 100%;
+        background-color: $white-6;
+        border-radius: 3px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        .amount__action {
+          padding: 7.5px;
+          display: flex;
+          align-items: center;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          button {
+            border-radius: 3px;
+            font: 600 14px 'Gilroy';
+            color: $white-1;
+            background: linear-gradient(90deg, #bab1ed, #8370ef);
+            border: 0;
+            padding: 5px 0;
+            cursor: pointer;
+            &:hover {
+              background: linear-gradient(-90deg, #bab1ed, #8370ef);
+            }
+            &:last-child {
+              margin-left: 5px;
+            }
+          }
+        }
+        input {
+          width: 100%;
+          padding: 5px 0;
+          border-radius: 3px;
+          background-color: $white-11;
+          text-align: center;
+          font: 600 14px 'Gilroy';
+          color: $black-1;
+          border: none;
+          outline: none;
+          margin: 7.5px 0;
+        }
+      }
+    }
+    &-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 5px;
+      button {
+        padding: 10px 0;
+        border-radius: 3px;
+        background-color: $white-5;
+        border: 0;
+        font: 600 15px 'Gilroy';
+        color: $purpure-1;
+        cursor: pointer;
+        &:last-child {
+          grid-column: span 2;
+          font: 700 16px 'Gilroy';
+          background-color: $yellow-2;
+          color: $white-1;
+          transition: all 0.1s;
+          &:hover {
+            background-color: $yellow-1;
+          }
+        }
+      }
+    }
+    &-hash {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ccd2e8;
+      margin-top: 25px;
+      cursor: pointer;
+      h3 {
+        font: 600 14px 'Gilroy';
+      }
+      .icon {
+        margin-left: 5px;
+      }
+    }
+  }
+  &__game {
+    flex-grow: 1;
+    border-radius: 0 10px 10px 0;
+    .keno__grid,
+    .keno__history {
+      padding: 20px;
+    }
+    .keno__grid {
+      &-list {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-gap: 5px;
+        .keno__grid-item {
+          background-color: $white-5;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          aspect-ratio: 1 / 1;
+          font: 600 24px 'Gilroy';
+          color: $black-1;
+          border-radius: 5px;
+          transition: all 0.2s;
+          @media only screen and (max-width: 1100px) {
+            font-size: 16px;
+          }
+          cursor: pointer;
+          &:hover {
+            background-color: $white-8;
+          }
+          &.selected {
+            background-color: $yellow-1;
+            color: $white-1;
+            &:hover {
+              background-color: $yellow-2;
+            }
+          }
+          &.lose {
+            background-color: $red-1;
+          }
+          &.win {
+            background-color: $green-1;
+          }
+        }
+      }
+    }
+    .keno__history {
+      border-top: 1px solid $white-6;
+      min-width: 0;
+      .swiper-container {
+        display: flex;
+        .swiper-prev,
+        .swiper-next {
+          border-radius: 5px;
+          background-color: $white-10;
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
+        .swiper-prev {
+          margin-right: 10px;
+        }
+        .swiper-next {
+          margin-left: 10px;
+        }
+        .swiper {
+          display: grid;
+          .swiper-wrapper {
+            min-width: 0;
+            .swiper-slide {
+              &-content {
+                border-radius: 5px;
+                background-color: $white-10;
+                padding: 10px;
+                h3 {
+                  font: 600 13px 'Gilroy';
+                  color: $white-4;
+                }
+                h2 {
+                  font: 600 15px 'Gilroy';
+                  color: $black-1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
