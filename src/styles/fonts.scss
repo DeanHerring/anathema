@@ -1,0 +1,18 @@
+// 400, 600, 700
+@font-face {
+  font-family: Gilroy;
+  src: url(@/assets/fonts/Gilroy-Regular.woff);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Gilroy;
+  src: url(@/assets/fonts/Gilroy-SemiBold.woff);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Gilroy;
+  src: url(@/assets/fonts/Gilroy-Bold.woff);
+  font-weight: 700;
+}
