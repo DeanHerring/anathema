@@ -38,17 +38,68 @@
       border-radius: 50px;
       width: 200px;
       margin: 0 10px;
+      position: relative;
       .wallet__amount {
         h1 {
           font: 600 16px 'Gilroy';
           color: $black-1;
         }
       }
-      .wallet__currency {
+      .wallet__ticker {
         display: flex;
         .icon {
           margin-left: 5px;
           color: $black-1;
+        }
+      }
+      .wallet-dropdown {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        width: 100%;
+        background-color: $white-2;
+        border-radius: 10px;
+        box-shadow: 0 0 10px -5px rgba($white-4, 0.22);
+        z-index: 2;
+        display: none;
+        &.show {
+          display: block;
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          top: -10px;
+          width: 0;
+          height: 0;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-bottom: 10px solid $white-2;
+          clear: both;
+        }
+        &__list {
+          .wallet-dropdown__item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            transition: all 0.2s;
+            cursor: pointer;
+            &:hover {
+              background-color: $white-5;
+            }
+            &:first-child {
+              border-radius: 5px 5px 0 0;
+            }
+            &:last-child {
+              border-radius: 0 0 5px 5px;
+            }
+            h1 {
+              font: 600 14px 'Gilroy';
+              color: $white-4;
+            }
+          }
         }
       }
     }

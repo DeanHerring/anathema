@@ -211,17 +211,66 @@ html,
   border-radius: 50px;
   width: 200px;
   margin: 0 10px;
+  position: relative;
 }
 .header__container .header__wallet .wallet__amount h1 {
   font: 600 16px "Gilroy";
   color: #2c3034;
 }
-.header__container .header__wallet .wallet__currency {
+.header__container .header__wallet .wallet__ticker {
   display: flex;
 }
-.header__container .header__wallet .wallet__currency .icon {
+.header__container .header__wallet .wallet__ticker .icon {
   margin-left: 5px;
   color: #2c3034;
+}
+.header__container .header__wallet .wallet-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+  background-color: #f7f5fe;
+  border-radius: 10px;
+  box-shadow: 0 0 10px -5px rgba(186, 177, 237, 0.22);
+  z-index: 2;
+  display: none;
+}
+.header__container .header__wallet .wallet-dropdown.show {
+  display: block;
+}
+.header__container .header__wallet .wallet-dropdown::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -10px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid #f7f5fe;
+  clear: both;
+}
+.header__container .header__wallet .wallet-dropdown__list .wallet-dropdown__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.header__container .header__wallet .wallet-dropdown__list .wallet-dropdown__item:hover {
+  background-color: #e8e5ff;
+}
+.header__container .header__wallet .wallet-dropdown__list .wallet-dropdown__item:first-child {
+  border-radius: 5px 5px 0 0;
+}
+.header__container .header__wallet .wallet-dropdown__list .wallet-dropdown__item:last-child {
+  border-radius: 0 0 5px 5px;
+}
+.header__container .header__wallet .wallet-dropdown__list .wallet-dropdown__item h1 {
+  font: 600 14px "Gilroy";
+  color: #bab1ed;
 }
 .header__container .mobile-hamburger {
   display: none;
