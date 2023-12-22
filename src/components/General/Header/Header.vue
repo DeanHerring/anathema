@@ -2,18 +2,33 @@
   <header class="header">
     <div class="header__container">
       <div class="header__logo">
-        <img :src="logo" alt="Huh?" />
+        <img :src="images.logo" alt="Huh?" />
         <h1>Anathema</h1>
       </div>
 
-      <div class="header__wallet">
+      <div class="header__wallet" @click="displayWalletDropdown" v-if="user_id">
         <div class="wallet__amount">
-          <h1>0.0000000</h1>
+          <h1>{{ this.formatNumber(activeWallet.amount) }}</h1>
         </div>
-        <div class="wallet__currency">
-          <img :src="bitcoin" alt="Bitcoin" />
-          <font-awesome-icon icon="fa-solid fa-sort-down" class="icon" />
+        <div class="wallet__ticker">
+          <img :src="getTickerImage(activeWallet.ticker)" :alt="activeWallet.ticker" />
+
+          <font-awesome-icon icon="fa-solid fa-sort-down" class="icon" v-if="!UI.isShowWalletDropdown" />
+          <font-awesome-icon icon="fa-solid fa-sort-up" class="icon" v-if="UI.isShowWalletDropdown" />
         </div>
+
+        <Transition>
+          <div class="wallet-dropdown" v-if="UI.isShowWalletDropdown">
+            <ul class="wallet-dropdown__list">
+              <li class="wallet-dropdown__item" v-for="wallet in wallets" :key="wallet.id">
+                <h1>
+                  {{ this.formatNumber(wallet.amount) }}
+                </h1>
+                <img :src="getTickerImage(wallet.ticker)" alt="Bitcoin" />
+              </li>
+            </ul>
+          </div>
+        </Transition>
       </div>
 
       <div class="mobile-hamburger">
@@ -26,14 +41,81 @@
 <script>
 import logo from '@/assets/images/logo.svg';
 import bitcoin from '@/assets/images/bitcoin.svg';
+import ethereum from '@/assets/images/ethereum.svg';
+import litecoin from '@/assets/images/litecoin.svg';
+
+import axios from 'axios';
+
+import { Config } from '@/config/config.js';
 
 export default {
   name: 'Header',
   data() {
     return {
-      logo,
-      bitcoin,
+      images: {
+        logo,
+        bitcoin,
+        ethereum,
+        litecoin,
+      },
+      UI: {
+        isShowWalletDropdown: false,
+      },
+
+      user_id: Config.user_id,
+      wallets: [],
+      activeWallet: {},
     };
+  },
+  methods: {
+    displayWalletDropdown() {
+      this.UI.isShowWalletDropdown = !this.UI.isShowWalletDropdown;
+    },
+    getTickerImage(ticker) {
+      switch (ticker) {
+        case 'BTC':
+          return this.images.bitcoin;
+        case 'ETH':
+          return this.images.ethereum;
+        case 'LTC':
+          return this.images.litecoin;
+        default:
+          return 'ass.jpg';
+      }
+    },
+    formatNumber(number) {
+      if (number) {
+        return number > 1 ? number.toFixed(4) : number.toFixed(8);
+      }
+      return (0).toFixed(8);
+    },
+  },
+  async mounted() {
+    try {
+      const res = await axios.get(`http://localhost:3000/user/${Config.user_id}`);
+
+      if (!res.data.ok) {
+        throw new Error(res.data.error);
+      }
+
+      const wallets = res.data.data.map((wallet) => {
+        return {
+          ...wallet,
+          isActive: wallet.ticker === 'BTC',
+        };
+      });
+      const activeWallet = wallets.filter((wallet) => wallet.isActive);
+
+      console.log(wallets, activeWallet);
+
+      this.wallets = wallets;
+      this.activeWallet = {
+        amount: activeWallet[0].amount,
+        ticker: activeWallet[0].ticker,
+      };
+    } catch (e) {
+      console.error(e.message, e);
+    }
   },
 };
 </script>
@@ -79,17 +161,66 @@ export default {
       border-radius: 50px;
       width: 200px;
       margin: 0 10px;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
       .wallet__amount {
         h1 {
           font: 600 16px 'Gilroy';
           color: $black-1;
         }
       }
-      .wallet__currency {
+      .wallet__ticker {
         display: flex;
+        align-items: center;
         .icon {
           margin-left: 5px;
           color: $black-1;
+        }
+      }
+      .wallet-dropdown {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        width: 100%;
+        background-color: $white-2;
+        border-radius: 10px;
+        box-shadow: 0 0 10px -5px rgba($white-4, 0.22);
+        z-index: 2;
+        &::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          top: -10px;
+          width: 0;
+          height: 0;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-bottom: 10px solid $white-2;
+          clear: both;
+        }
+        &__list {
+          border-radius: 10px;
+          overflow: hidden;
+          .wallet-dropdown__item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            transition: all 0.2s;
+            cursor: pointer;
+            &:hover {
+              background-color: $white-5;
+            }
+            &.active {
+              background-color: red;
+            }
+            h1 {
+              font: 600 14px 'Gilroy';
+              color: $white-4;
+            }
+          }
         }
       }
     }
@@ -143,5 +274,15 @@ export default {
       }
     }
   }
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
