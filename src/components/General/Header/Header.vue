@@ -20,7 +20,12 @@
         <Transition>
           <div class="wallet-dropdown" v-if="UI.isShowWalletDropdown">
             <ul class="wallet-dropdown__list">
-              <li class="wallet-dropdown__item" v-for="wallet in wallets" :key="wallet.id">
+              <li
+                class="wallet-dropdown__item"
+                v-for="wallet in wallets"
+                :key="wallet.id"
+                @click="setActiveWallet(wallet)"
+              >
                 <h1>
                   {{ this.formatNumber(wallet.amount) }}
                 </h1>
@@ -64,7 +69,10 @@ export default {
 
       user_id: Config.user_id,
       wallets: [],
-      activeWallet: {},
+      activeWallet: {
+        amount: 0.0,
+        ticker: 'BTC',
+      },
     };
   },
   methods: {
@@ -89,6 +97,10 @@ export default {
       }
       return (0).toFixed(8);
     },
+    setActiveWallet(wallet) {
+      this.activeWallet.amount = wallet.amount;
+      this.activeWallet.ticker = wallet.ticker;
+    },
   },
   async mounted() {
     try {
@@ -106,13 +118,10 @@ export default {
       });
       const activeWallet = wallets.filter((wallet) => wallet.isActive);
 
-      console.log(wallets, activeWallet);
-
       this.wallets = wallets;
-      this.activeWallet = {
-        amount: activeWallet[0].amount,
-        ticker: activeWallet[0].ticker,
-      };
+
+      this.activeWallet.amount = activeWallet[0].amount;
+      this.activeWallet.ticker = activeWallet[0].ticker;
     } catch (e) {
       console.error(e.message, e);
     }
