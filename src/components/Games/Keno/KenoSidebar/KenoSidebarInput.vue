@@ -2,7 +2,7 @@
   <div class="keno__sidebar-amount">
     <header class="amount__header">
       <h3>Bet Amount</h3>
-      <h3>$981.22</h3>
+      <h3>$0.00</h3>
     </header>
 
     <div class="amount__input">
@@ -11,7 +11,7 @@
         <button>/2</button>
       </div>
 
-      <input type="text" placeholder="0.1000" />
+      <input name="amount" :placeholder="amount" v-model="amount" />
 
       <div class="amount__action">
         <button>X2</button>
@@ -23,7 +23,12 @@
 
 <script>
 export default {
-  name: 'Amount',
+  name: 'KenoSidebarInput',
+  data() {
+    return {
+      amount: 0,
+    };
+  },
 };
 </script>
 

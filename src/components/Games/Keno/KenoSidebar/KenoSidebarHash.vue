@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'Hash',
+  name: 'KenoSidebarHash',
 };
 </script>
 

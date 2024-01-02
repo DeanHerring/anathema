@@ -8,9 +8,16 @@
 </template>
 
 <script>
+import { SwiperSlide } from 'swiper/vue';
+
 export default {
-  name: 'HistoryItem',
-  props: ['step'],
+  name: 'KenoStep',
+  props: {
+    step: {
+      id: Number,
+      multiplier: Number,
+    },
+  },
 };
 </script>
 

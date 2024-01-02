@@ -1,3 +1,3 @@
 export const Config = {
-  user_id: 3,
+  userId: 3,
 };

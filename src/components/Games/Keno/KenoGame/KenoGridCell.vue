@@ -4,8 +4,10 @@
 
 <script>
 export default {
-  name: 'GridItem',
-  props: ['id'],
+  name: 'KenoGridCell',
+  props: {
+    id: Number,
+  },
 };
 </script>
 

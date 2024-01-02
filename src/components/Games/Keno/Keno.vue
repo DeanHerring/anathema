@@ -1,21 +1,17 @@
 <template>
   <div class="keno">
-    <keno-sidebar></keno-sidebar>
-    <div class="keno__game">
-      <keno-grid></keno-grid>
-      <keno-history></keno-history>
-    </div>
+    <KenoSidebar />
+    <KenoGame />
   </div>
 </template>
 
 <script>
 import KenoSidebar from './KenoSidebar/KenoSidebar.vue';
-import KenoGrid from './KenoGrid/KenoGrid.vue';
-import KenoHistory from './KenoHistory/KenoHistory.vue';
+import KenoGame from './KenoGame/KenoGame.vue';
 
 export default {
   name: 'Keno',
-  components: { KenoSidebar, KenoGrid, KenoHistory },
+  components: { KenoSidebar, KenoGame },
 };
 </script>
 
@@ -28,16 +24,13 @@ export default {
   border-radius: 10px;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  margin: 25px auto;
   @media only screen and (max-width: 1000px) {
     grid-template-columns: 1fr 1.33fr;
   }
   @media only screen and (max-width: 800px) {
     display: flex;
     flex-direction: column;
-  }
-  &__game {
-    flex-grow: 1;
-    border-radius: 0 10px 10px 0;
   }
 }
 </style>

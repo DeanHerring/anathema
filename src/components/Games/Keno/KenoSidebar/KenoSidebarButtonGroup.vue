@@ -2,13 +2,18 @@
   <div class="keno__sidebar-buttons">
     <button>Auto Pick</button>
     <button>Clear Table</button>
-    <button>Play $9 188.99</button>
+    <button @click="takeBet">Play $9 188.99</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Actions',
+  name: 'KenoSidebarButtonGroup',
+  methods: {
+    takeBet() {
+      console.log('Take a bet');
+    },
+  },
 };
 </script>
 

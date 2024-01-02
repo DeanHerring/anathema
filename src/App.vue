@@ -1,35 +1,27 @@
 <template>
-  <section class="content">
-    <Sidebar />
-
-    <div class="hero">
-      <Header />
-      <Container>
-        <Keno />
-      </Container>
-    </div>
-  </section>
+  <main class="app">
+    <TheSidebar />
+    <TheContent />
+  </main>
 </template>
 
 <script>
-import Header from '@/components/General/Header/Header.vue';
-import Sidebar from '@/components/General/Sidebar/Sidebar.vue';
-import Container from '@/components/General/Container/Container.vue';
-import Keno from '@/components/Keno/Keno.vue';
+import TheSidebar from '@/components/General/Sidebar/TheSidebar.vue';
+import TheContent from '@/components/General/TheContent.vue';
 
 export default {
   name: 'App',
-  components: { Header, Sidebar, Container, Keno },
+  components: {
+    TheSidebar,
+    TheContent,
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-.content {
+.app {
   width: 100%;
   display: flex;
   min-height: 100vh;
-  .hero {
-    flex-grow: 1;
-  }
 }
 </style>
