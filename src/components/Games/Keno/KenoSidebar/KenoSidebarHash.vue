@@ -1,6 +1,6 @@
 <template>
   <div class="keno__sidebar-hash">
-    <h3>Hash: 879asd7asd079a079sda09sd7980as</h3>
+    <h3>Hash: None</h3>
     <font-awesome-icon icon="fa-solid fa-copy" class="icon" />
   </div>
 </template>

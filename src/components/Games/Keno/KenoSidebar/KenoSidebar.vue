@@ -1,5 +1,5 @@
 <template>
-  <form class="keno__sidebar">
+  <form class="keno__sidebar" @click.prevent>
     <KenoSidebarLogo />
     <KenoSidebarInput />
     <KenoSidebarButtonGroup />

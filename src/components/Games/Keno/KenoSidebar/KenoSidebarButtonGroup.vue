@@ -1,17 +1,42 @@
 <template>
   <div class="keno__sidebar-buttons">
-    <button>Auto Pick</button>
-    <button>Clear Table</button>
-    <button @click="takeBet">Play $9 188.99</button>
+    <button @click="autoPick">Auto Pick</button>
+    <button @click="reset">Clear Table</button>
+    <button @click="play">Play $76678</button>
   </div>
 </template>
 
 <script>
+import { Config } from '@/config/config.js';
+import { useKenoStore } from '@/stores/useKenoStore.js';
+
+import sampleSize from 'lodash.sampleSize';
+import range from 'lodash.range';
+
 export default {
   name: 'KenoSidebarButtonGroup',
+  data() {
+    return {
+      userId: Config.USER_ID,
+    };
+  },
   methods: {
-    takeBet() {
-      console.log('Take a bet');
+    play() {
+      const store = useKenoStore();
+
+      store.setPlayer(this.userId);
+
+      const { btcAmount, activeCells, userId } = store;
+
+      // Час подумати над бекендом
+    },
+    autoPick() {
+      const uniqueCells = sampleSize(range(40), 10);
+
+      this.$emitter.emit('auto-pick', uniqueCells);
+    },
+    reset() {
+      this.$emitter.emit('reset');
     },
   },
 };

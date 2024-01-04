@@ -49,7 +49,7 @@ export default {
   },
   data() {
     return {
-      userId: Config.userId,
+      userId: Config.USER_ID,
       otherWallets: [],
       currentWallet: {},
       tickers: {

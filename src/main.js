@@ -39,9 +39,22 @@ const router = createRouter({
 // Plugins
 import formatNumber from './plugins/formatNumber.js';
 
+// Pinia
+import { createPinia } from 'pinia';
+
+const pinia = createPinia();
+
+// Event Bus
+import mitt from 'mitt';
+
+const emitter = mitt();
+
 // Vue
 const app = createApp(App);
 
+app.config.globalProperties.$emitter = emitter;
+
+app.use(pinia);
 app.use(router);
 app.use(formatNumber);
 

@@ -1,5 +1,5 @@
 <template>
-  <li class="keno__grid-item">{{ id }}</li>
+  <li class="keno__grid-item" :class="{ active: isActiveCell(id) }">{{ id }}</li>
 </template>
 
 <script>
@@ -7,6 +7,18 @@ export default {
   name: 'KenoGridCell',
   props: {
     id: Number,
+    status: Number,
+  },
+  methods: {
+    isActiveCell() {
+      return this.status === 1;
+    },
+    isLoseCell() {
+      return this.status === 2;
+    },
+    isWinCell() {
+      return this.status === 3;
+    },
   },
 };
 </script>
@@ -23,7 +35,6 @@ export default {
   font: 600 24px 'Gilroy';
   color: $black-1;
   border-radius: 5px;
-  transition: all 0.2s;
   user-select: none;
   @media only screen and (max-width: 1100px) {
     font-size: 16px;
@@ -32,7 +43,7 @@ export default {
   &:hover {
     background-color: $white-8;
   }
-  &.selected {
+  &.active {
     background-color: $yellow-1;
     color: $white-1;
     &:hover {
@@ -41,9 +52,11 @@ export default {
   }
   &.lose {
     background-color: $red-1;
+    color: $white-1;
   }
   &.win {
     background-color: $green-1;
+    color: $white-1;
   }
 }
 </style>

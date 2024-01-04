@@ -1,3 +1,9 @@
 export const Config = {
-  userId: 3,
+  USER_ID: 3,
+  BTC_QUOT: 44861.15,
+  ETH_QUOT: 2365.58,
+  LTC_QUOT: 73.11,
+  CURRENT_WALLET: 'BTC',
+  USD_MIN_LIMIT: 10,
+  USD_MAX_LIMIT: 50000,
 };

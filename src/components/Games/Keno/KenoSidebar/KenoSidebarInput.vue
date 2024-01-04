@@ -2,32 +2,65 @@
   <div class="keno__sidebar-amount">
     <header class="amount__header">
       <h3>Bet Amount</h3>
-      <h3>$0.00</h3>
+      <h3>${{ this.$formatNumber(this.amount * this.BTC_QUOT) }}</h3>
     </header>
 
     <div class="amount__input">
       <div class="amount__action">
-        <button>Min</button>
-        <button>/2</button>
+        <button @click="this.min">Min</button>
+        <button @click="this.divide">/2</button>
       </div>
 
-      <input name="amount" :placeholder="amount" v-model="amount" />
+      <input name="amount" :placeholder="this.USD_MIN_LIMIT" v-model.number="this.amount" />
 
       <div class="amount__action">
-        <button>X2</button>
-        <button>Max</button>
+        <button @click="this.multiply">X2</button>
+        <button @click="this.max">Max</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { Config } from '@/config/config.js';
+import { useKenoStore } from '@/stores/useKenoStore.js';
+
 export default {
   name: 'KenoSidebarInput',
+  updated() {
+    const store = useKenoStore();
+
+    store.setBet(this.amount);
+  },
   data() {
     return {
       amount: 0,
+      BTC_QUOT: Config.BTC_QUOT,
+      USD_MIN_LIMIT: Config.USD_MIN_LIMIT,
+      USD_MAX_LIMIT: Config.USD_MAX_LIMIT,
     };
+  },
+  methods: {
+    min() {
+      const min = Number(this.USD_MIN_LIMIT / this.BTC_QUOT);
+
+      this.amount = min;
+    },
+    divide() {
+      const divide = this.amount / 2;
+
+      this.amount = divide;
+    },
+    multiply() {
+      const multiply = this.amount * 2;
+
+      this.amount = multiply;
+    },
+    max() {
+      const max = Number(this.USD_MAX_LIMIT / this.BTC_QUOT);
+
+      this.amount = max;
+    },
   },
 };
 </script>
@@ -82,7 +115,7 @@ export default {
     }
     input {
       width: 100%;
-      padding: 5px 0;
+      padding: 5px;
       border-radius: 3px;
       background-color: $white-11;
       text-align: center;
