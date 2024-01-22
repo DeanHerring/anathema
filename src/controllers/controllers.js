@@ -1,5 +1,7 @@
 import { UserController } from './user.controller.js';
+import { KenoController } from './keno.controller.js';
 
-export const Controllers = {
+export const controllers = {
   user: UserController,
+  keno: KenoController,
 };

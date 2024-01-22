@@ -5,13 +5,17 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "server": "cd src && npx nodemon index"
+    "server": "cd src && npx nodemon index",
+    "test": "cd src/test && npx nodemon test"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "lodash.range": "^3.2.0",
+    "lodash.samplesize": "^4.2.0",
     "mysql2": "^3.6.5"
   }
 }
